@@ -46,7 +46,7 @@ url := st.URL()                         // the GIF, once st.Status == "success"
 left, err := c.Credits(ctx)             // credits left on the account, free to call
 ```
 
-`Client` fields: `APIKey`, `BaseURL` (default `https://aigifmaker.ai`), `PollEvery` (3 seconds), `Timeout` (5 minutes in total), `HTTP`.
+`Client` fields: `APIKey`, `BaseURL` (default `https://aigifmaker.ai`), `PollEvery` (3 seconds), `Timeout` (15 minutes in total), `HTTP`.
 
 On an account that has not bought credits yet, a GIF can wait in a queue first: `Status` then reports `processing` with `Queued` set and `QueueEta` in seconds. `Generate` and `Wait` keep polling through it.
 

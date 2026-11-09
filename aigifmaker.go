@@ -27,7 +27,7 @@ import (
 )
 
 // Version is the SDK version sent in the User-Agent header.
-const Version = "0.1.0"
+const Version = "0.1.1"
 
 // BaseURL is the service this package talks to.
 const BaseURL = "https://aigifmaker.ai"
@@ -95,7 +95,7 @@ type Client struct {
 	BaseURL   string
 	HTTP      *http.Client
 	PollEvery time.Duration // default 3s
-	Timeout   time.Duration // total wait in Generate; default 5 minutes
+	Timeout   time.Duration // total wait in Generate; default 15 minutes
 }
 
 // New returns a client. An empty key reads AIGIFMAKER_API_KEY.
@@ -104,7 +104,7 @@ func New(apiKey string) *Client {
 		apiKey = strings.TrimSpace(os.Getenv(EnvKey))
 	}
 	return &Client{APIKey: apiKey, BaseURL: BaseURL, HTTP: &http.Client{Timeout: 60 * time.Second},
-		PollEvery: 3 * time.Second, Timeout: 5 * time.Minute}
+		PollEvery: 3 * time.Second, Timeout: 15 * time.Minute}
 }
 
 // Generate turns a prompt into an animated GIF with the key in
